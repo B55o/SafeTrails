@@ -1,0 +1,24 @@
+{
+  "weatherBasicInformation": [
+    {
+      "id": 0,
+      "name": "Ogólne",
+      "description": "Podczas planowania wycieczki długośc dnia jest bardzo istotna, trzeba przystosować do niej długość i trudność naszej trasy, przed świtem/ po zmroku temperatura spada co moze poskutkować zmianą warunków na trasie, musimy tez wziąć pod uwagę widoczność oznaczeń i przeszkód które w ciemności mogą być trudniejsze do zauwazenia. Wazne jest tez aby spakować się na wypadek niezaplanowanych sytuacji na trasie które mogą wydłuzyc czas trwania naszej wycieczki"
+    },
+    {
+      "id": 1,
+      "name": "Wiatr",
+      "description": "lala"
+    },
+    {
+      "id": 2,
+      "name": "Opady",
+      "description": "Zarówno deszcz jak i opady sniegu powinny przykuć naszą uwagę podczas planowania trasy. W zimę ilość śniegu ale tez jego struktura mają najwaniejsze"
+    },
+    {
+      "id": 3,
+      "name": "Temperatura",
+      "description": "Temperatura jest jednym z najistotniejszych czynników pogodowych jakie mogą mieć wpływ na nasze bezpieczeństwo na trasie, w zaleznosci od pory roku duza amplituda temperatury moze miec ogromny wplyw na lokalne zagrozenia, w zime wzrost temperatury moze znacznie zwiekszyc zagrozenie lawinowe"
+    }
+  ]
+}

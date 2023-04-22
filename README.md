@@ -1,1 +1,1 @@
-# SafeTrails
+# SAFE-HIKE

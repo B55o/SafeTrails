@@ -1,0 +1,55 @@
+{
+  "Zima": [
+    {
+      "id": 0,
+      "name": "Czekan",
+      "photoUrl": "public/assets/images/czekan.png",
+      "shopUrl": "https://8a.pl/czekany-turystyczne",
+      "description": "Czekany to istotny element ekwipunku podczas poruszania się zimą w terenie o dużym nachyleniu. W ofercie posiadamy czekany do turystyki (o prostym stylisku) oraz do wspinaczki (wygięte), które pomogą bezpiecznie pokonać pokrytą śniegiem i lodem drogę."
+    },
+    {
+      "id": 1,
+      "name": "Plecak ABS",
+      "photoUrl": "public/assets/images/plecak.jpeg",
+      "shopUrl": "https://8a.pl/plecaki-lawinowe",
+      "description": "Zyskujące coraz większą popularność plecaki lawinowe to niemal niezbędny dodatek do wyposażenia każdego świadomego zagrożeń miłośnika skitouringu. Plecak lawinowy zwiększa szanse na przeżycie w czasie zejścia lawiny."
+    },
+    {
+      "id": 2,
+      "name": "Raki",
+      "photoUrl": "public/assets/images/raki.jpeg",
+      "shopUrl": "https://8a.pl/raki",
+      "description": "Raki turystyczne to podstawowy element zimowego wyposażenia. Pomogą w bezpiecznym przemierzaniu ośnieżonych i oblodzonych szlaków, przemierzaniu lodowców i ambitnych dróg w górach wysokich. W naszej ofercie znajdziesz raki na buty wysokogórskie i trekkingowe z różnymi systemami mocowania."
+    },
+    {
+      "id": 3,
+      "name": "Raczki",
+      "photoUrl": "public/assets/images/raczki.jpg",
+      "shopUrl": "https://8a.pl/raczki-turystyczne",
+      "description": "Raczki turystyczne to niezbędny dodatek na oblodzonych ścieżkach i zaśnieżonych szlakach. Raczki na buty spiszą się wszystkim turystom wybierającym się zimą na łagodniejsze szlaki, gdzie nie ma potrzeby używania raków górskich."
+    },
+    {
+      "id": 4,
+      "name": "Rakiety śniezne",
+      "photoUrl": "public/assets/images/rakiety.jpeg",
+      "shopUrl": "https://8a.pl/rakiety-sniezne",
+      "description": "Rakiety śnieżne pozwolą na sprawne przemieszczanie się w głębokim śniegu wszystkim miłośnikom zimowych wypraw. Dopracowane konstrukcje doskonale sprawdzą się na zaśnieżonych szlakach i ścieżkach."
+    },
+    {
+      "id": 5,
+      "name": "ABC lawinowe",
+      "photoUrl": "public/assets/images/abc.jpeg",
+      "shopUrl": "https://8a.pl/lawinowe-abc",
+      "description": "Lawinowe ABC to niezbędne w wyposażeniu każdego narciarza skiturowego i miłośnika zimowej turystyki. W jego skład wchodzą elementy, które znacząco zwiększają szanse na szybkie wydobycie osób zasypanych przez lawinę."
+    }
+  ],
+  "Lato": [
+    {
+      "id": 0,
+      "name": "Kijki trekingowe",
+      "photoUrl": "public/assets/images/kije.webp",
+      "shopUrl": "https://8a.pl/kije-trekkingowe",
+      "description": "Kije trekkingowe to niezastąpiona pomoc, która ułatwi każdą pieszą wyprawę. Pozwalają odciążyć kręgosłup i podnoszą bezpieczeństwo, dzięki możliwości podparcia się i lepszej stabilizacji na trudnych fragmentach."
+    }
+  ]
+}
