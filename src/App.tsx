@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import { Container } from "react-bootstrap";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Information } from "./pages/Information";
@@ -13,8 +12,7 @@ import { Equipment } from "./pages/Equipment";
 function App() {
   
   return (
-    <>
-      <Container className="mb-4">
+      <div className="div">
         <Routes>
           <Route path="/" element={<WelcomeScreen/>} />
           <Route path="/home" element={<AuthRoute><Home /></AuthRoute>} />
@@ -25,8 +23,7 @@ function App() {
           <Route path="/addEvent" element ={<AddEvent/>} />
           <Route path="/equipment" element = {<Equipment />} />
         </Routes>
-      </Container>
-    </>
+      </div>
   );
 }
 
