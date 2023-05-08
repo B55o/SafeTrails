@@ -1,6 +1,6 @@
 import { Button, Stack } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import CzarnyStawImgUrl from "./../assets/images/CzarnyStaw.jpeg";
+import CzarnyStawImgUrl from "./../assets/images/CzarnyStaw.jpg";
 import wSImage from "./../assets/images/wsImage.png";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useState } from "react";
@@ -42,14 +42,14 @@ export function WelcomeScreen() {
   };
 
   return (
-    <div className="background">
-      <div className="login-container">
-        <div className="column">
-          <img src={wSImage} className="welcome-logo" />
-          <span className="appName" style={{ fontFamily: "Montserrat" }}>
+    <div className="ws-background">
+      <div className="ws-login-container">
+        <div className="ws-column">
+          <img src={wSImage} className="ws-welcome-logo" />
+          <span className="ws-app-name" style={{ fontFamily: "Montserrat" }}>
             {WelcomeString.appName}
           </span>
-          <span className="description" style={{ fontFamily: "Montserrat" }}>
+          <span className="ws-description" style={{ fontFamily: "Montserrat" }}>
             {WelcomeString.appDescription}
           </span>
           <Stack gap={2}>
@@ -60,14 +60,14 @@ export function WelcomeScreen() {
                 onClick={() => signInWithGoogle()}
                 disabled={authing}
               >
-                <img src={googleLoginIcon} className="icon" />
-                <span className="text">{WelcomeString.buttonText}</span>
+                <img src={googleLoginIcon} className="ws-icon" />
+                <span className="ws-text">{WelcomeString.buttonText}</span>
               </Button>
             </Link>
           </Stack>
         </div>
-        <div className="column">
-          <img src={CzarnyStawImgUrl} className="welcome-image" />
+        <div className="ws-column">
+          <img src={CzarnyStawImgUrl} className="ws-welcome-image" />
         </div>
       </div>
     </div>

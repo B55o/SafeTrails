@@ -1,10 +1,13 @@
 import { Button, Card, Col, Dropdown, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "./../assets/CSS/components/TrailsItem.style.css";
+import peak from "./../../public/assets/images/koscielec.jpg";
+import peakTrail from "./../../public/assets/images/koscielec-szlak1.png";
 import { TrailsItemProps } from "../models/trailItemProps.model";
-import windcIconUrl from "./../assets/icons/wind.svg";
-import globeIconUrl from "./../assets/icons/globe.svg";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { TrailsItemString } from "../models/enums/strings/trailsItemStrings";
+import "./../assets/CSS/components/TrailsItem.style.css";
+import { useState } from "react";
 
 export function TrailsItem(trail: TrailsItemProps): JSX.Element {
   const peakFromName: string = `https://www.google.com/maps/place/${trail.name}/data=!3m1!1e3`;
@@ -13,13 +16,15 @@ export function TrailsItem(trail: TrailsItemProps): JSX.Element {
   const lawinyToprUrl: string = "https://lawiny.topr.pl/";
   let warningBtnText: string = "";
 
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   if (trail.warnings !== undefined) {
     if (trail.warnings?.length === 1) {
-      warningBtnText = "Aktualizacja";
+      warningBtnText = "dodane zdarzenie";
     } else if (trail.warnings?.length <= 4 && trail.warnings?.length > 1) {
-      warningBtnText = "Aktualizacje";
+      warningBtnText = "dodane zdarzenia";
     } else {
-      warningBtnText = "Aktualizacji";
+      warningBtnText = "dodanych zdarzeń";
     }
   }
 
@@ -31,69 +36,80 @@ export function TrailsItem(trail: TrailsItemProps): JSX.Element {
   }
 
   return (
-    <Card className="shadow p3">
-      <Card.Img
-        variant="top"
-        src={trail.trailImgUrl}
-        height="300px"
-        style={{ objectFit: "cover" }}
-      />
-      <Card.Body className="d-flex flex-column">
-        <Card.Title className="d-flex justify-content-center align-items-baseline mb-4 ">
-          {" "}
-          <div className="fs-4">
-            <b>{trail.name}</b> - {trail.height}
-          </div>
-        </Card.Title>
-        <div className="d-flex justify-content-center align-items-baseline mb-4 ">
-          <Row>
-            <Col>
-                <Link to="/Information" state={{ details: trail }}>
-                  <Button
-                    className="btn-sm justify-content-center"
-                    variant="outline-warning"
-                    style={{ width: "150px" }}
-                  >
-                    <b>{trail.warnings?.length}</b>
-                    {"   "}
-                    {warningBtnText}{" "}
-                  </Button>
-                </Link>
-            </Col>
-            <Col>
-              <Link to="/Description" state={{ details: trail }}>
-                <Button
-                  className="btn-sm justify-content-around"
-                  variant="outline-secondary"
-                  style={{ width: "150px" }}
-                >
-                  {TrailsItemString.information}
-                </Button>
-              </Link>
-            </Col>
-          </Row>
+    <div className="ti-trail-container">
+      <div className="ti-image-wrapper">
+        <img className="ti-first-image" src={trail.trailImgUrl} />
+        <img className="ti-second-image" src={trail.trailSecImgUrl} />
+      </div>
+      <div className="ti-elements-wrapper">
+        <div className="ti-description">
+          <span className="ti-text">
+            {trail.name} - {trail.height}
+          </span>
         </div>
-        <div className="d-flex justify-content-center align-items-baseline mb-2">
-          <Row>
-            <Col className="col-md-auto">
-              <Dropdown>
-                <Dropdown.Toggle
-                  id="dropdown-button-dark-example1"
-                  variant="outline-secondary"
-                >
-                  {TrailsItemString.sites}
-                </Dropdown.Toggle>
-                <Dropdown.Menu variant="outline-secondary">
-                  <Dropdown.Item
+        <div className="ti-column1">
+          <Link
+            to="/Information"
+            state={{ details: trail }}
+            className="ti-b link-underline"
+          >
+            <Button
+              className="btn-sm justify-content-center"
+              variant="outline-secondary"
+            >
+              {trail.warnings?.length}
+              {"   "}
+              {warningBtnText}
+            </Button>
+          </Link>
+        </div>
+
+        <div className="ti-column1">
+          <Link
+            to="/Description"
+            state={{ details: trail }}
+            className="ti-b link-underline"
+          >
+            <Button
+              className="btn-sm justify-content-around"
+              variant="outline-secondary"
+            >
+              {TrailsItemString.information}
+            </Button>
+          </Link>
+        </div>
+        <div className="ti-column1">
+          <div className="ti-b">
+            <div className="dropdown">
+              <button
+                className="btn btn-outline-secondary btn-sm dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded={dropdownOpen}
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+              >
+                {TrailsItemString.sites}
+              </button>
+
+              <ul
+                className={`dropdown-menu dropdown-menu-end w-100 ${
+                  dropdownOpen ? "show" : ""
+                }`}
+                style={{ minWidth: "100%", width: "auto" }}
+              >
+                <li>
+                  <button
+                    className="dropdown-item"
                     onClick={() =>
                       window.open(peakFromName, "_blank", "noopener,noreferrer")
                     }
                   >
-                    <Row className="justify-content-between">
-                      <Col>{TrailsItemString.googleMaps}</Col>
-                    </Row>
-                  </Dropdown.Item>
-                  <Dropdown.Item
+                    {TrailsItemString.googleMaps}
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="dropdown-item"
                     onClick={() =>
                       window.open(
                         globalWeatherFromName,
@@ -102,19 +118,25 @@ export function TrailsItem(trail: TrailsItemProps): JSX.Element {
                       )
                     }
                   >
-                    <Row className="justify-content-around">
-                      <Col>{TrailsItemString.ventusky}</Col>
-                    </Row>
-                  </Dropdown.Item>
-                  <Dropdown.Divider />
-                  <DropdownItem
+                    {TrailsItemString.ventusky}
+                  </button>
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>
+                  <button
+                    className="dropdown-item"
                     onClick={() =>
                       window.open(toprUrl, "_blank", "noopener,noreferrer")
                     }
                   >
                     {TrailsItemString.toprCams}
-                  </DropdownItem>
-                  <DropdownItem
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="dropdown-item"
                     onClick={() =>
                       window.open(
                         lawinyToprUrl,
@@ -124,13 +146,13 @@ export function TrailsItem(trail: TrailsItemProps): JSX.Element {
                     }
                   >
                     {TrailsItemString.toprAvalanches}
-                  </DropdownItem>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Col>
-          </Row>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </Card.Body>
-    </Card>
+      </div>
+    </div>
   );
 }
