@@ -7,6 +7,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { OverlayElement } from "./Overlay";
 import defaultProfileImageUrl from "../assets/icons/profileDefault.svg";
 import { NavbarString } from "../models/enums/strings/navbarString";
+import "./../assets/CSS/components/Navbar.styles.css";
 
 export function Navbar(): JSX.Element {
   const auth = getAuth();
@@ -20,20 +21,17 @@ export function Navbar(): JSX.Element {
     profileImage = defaultProfileImageUrl;
   }
   return (
-    <div
-      className="shadow p-3 mb-2 d-flex align-items-center align-self-center justify-content-center"
-      style={{ height: "65px" }}
-    >
-      <Row className="w-100 d-flex justify-content-between mt-2">
-        <Col className="align-self-center col-auto mt-2">
-          <div>
-            <h3>
-              <b>{NavbarString.title}</b>
-            </h3>
+    <div className="navbar-container">
+      <Row className="row-navbar">
+        <Col className="col1 col-auto">
+          <div className="content-wrapper">
+            <span className="title" style={{ fontFamily: "Montserrat" }}>
+              {NavbarString.title}
+            </span>
           </div>
         </Col>
-        <Col className="d-flex justify-content-center align-self-center">
-          <div className="me-auto d-flex justify-content-center">
+        <Col className="col2">
+          <div className="me-auto">
             <Nav>
               {OverlayElement(
                 "bottom",
@@ -48,13 +46,16 @@ export function Navbar(): JSX.Element {
             </Nav>
           </div>
         </Col>
-        <Col className="d-flex justify-content-center align-self-center col-auto">
-          <div className="d-flex justify-content-center">
-           <b>{NavbarString.welcomeMsg}{localStorage.getItem("name")}!</b>
+        <Col className="col2 col-auto">
+          <div>
+            <span className="welcome-message" style={{ fontFamily: "Montserrat" }}>
+              {NavbarString.welcomeMsg}
+              {localStorage.getItem("name")}!
+            </span>
           </div>
         </Col>
-        <Col className="col-auto align-self-end">
-          <div className="mb-2">
+        <Col className="col3 col-auto">
+          <div className="image-container">
             <img
               src={profileImage}
               referrerPolicy="no-referrer"

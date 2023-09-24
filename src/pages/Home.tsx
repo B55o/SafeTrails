@@ -7,6 +7,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { TrailsItemProps } from "../models/trailItemProps.model";
 import { Warning } from "../models/warning.model";
 import React from "react";
+import "../assets/CSS/HS.styles.css";
 
 export function Home() {
   const trailsCollectionRef = collection(db, "Trails");
@@ -52,15 +53,17 @@ export function Home() {
     getTrails();
   }, []);
   return (
-    <div>
+    <div className="hs-background-home">
       <Navbar />
-      <Row md={2} xs={1} lg={3} className="g-3 mt-2">
-        {finalTrails.map((item, index) => (
-          <Col key={index}>
-            <TrailsItem trialID={0} {...item} />
-          </Col>
-        ))}
-      </Row>
+      <div className="hs-all-trails">
+        <Row md={2} xs={1} lg={3} className="mt-2 hs-row">
+          {finalTrails.map((item, index) => (
+            <Col key={index}>
+              <TrailsItem trialID={0} {...item} />
+            </Col>
+          ))}
+        </Row>
+      </div>
     </div>
   );
 }

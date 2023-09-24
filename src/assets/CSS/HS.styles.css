@@ -1,0 +1,40 @@
+.hs-all-trails {
+    margin: 0; 
+    overflow-x: hidden;
+}
+
+.hs-row {
+  justify-content: start;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.hs-background-home {
+    background-image: url(../images/topo.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+  }
+
+  /* Hide the scrollbar */
+  ::-webkit-scrollbar {
+    width: 0.2rem;
+    background-color: transparent;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 0.1em;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: darkgray;
+  }
