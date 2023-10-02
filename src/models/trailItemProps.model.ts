@@ -14,4 +14,6 @@ export type TrailsItemProps = {
     gradient: string;
     attention: string;
     wzniesienie: string;
+    fatMapUrl: string;
+    difficulty: string;
   };

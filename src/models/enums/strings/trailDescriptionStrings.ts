@@ -1,6 +1,6 @@
 export enum DescriptionStrings {
     weather= "Pogoda",
-    equipment = "Wyposazenie",
+    equipment = "Wyposażenie",
     news = "Aktualizacje",
     warning = "Uwagi dtyczące tego szlaku nie zostały jeszcze dodane",
     exposure = "Wystawa",

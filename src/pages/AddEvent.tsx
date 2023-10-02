@@ -31,6 +31,8 @@ export function AddEvent() {
     gradient: "",
     attention: "",
     wzniesienie: "",
+    fatMapUrl: "",
+    difficulty: "",
   };
 
   const [description, setDescription] = useState("");

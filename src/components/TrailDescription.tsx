@@ -1,74 +1,111 @@
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, ProgressBar, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { TrailsItemProps } from "../models/trailItemProps.model";
 import { ControlledCarousel } from "./Carousel";
 import { DescriptionStrings } from "../models/enums/strings/trailDescriptionStrings";
 import { List } from "@mui/material";
+import "./../assets/CSS/components/TrailDescription.styles.css";
 
-function ColWithButton(linkTo: string, label: string, trail: TrailsItemProps, variant: string) {
+interface progressBarProps {
+  variant: string;
+  amount: number;
+}
+
+function ColWithButton(
+  linkTo: string,
+  label: string,
+  trail: TrailsItemProps
+): JSX.Element {
   return (
-    <Col className="col-md-auto">
-      <Link to={linkTo} state={{ details: trail }}>
-        <Button
-          className="btn-sm mb-4"
-          variant={variant}
-        >
-          {label}
-        </Button>
-      </Link>
-    </Col>
+    <Link to={linkTo} state={{ details: trail }}>
+      <span className="td-text">{label}</span>
+    </Link>
+  );
+}
+
+function RenderDescriptionSection(
+  sectionTitle: string,
+  sectionDescription: string
+): JSX.Element {
+  return (
+    <div>
+      <div className="td-description">
+        <span className="td-trail-main">{sectionTitle}:</span>
+      </div>
+      <div className="td-title">
+        <span className="td-text">{sectionDescription}</span>
+      </div>
+    </div>
   );
 }
 
 export function TrailDescription(trail: TrailsItemProps): JSX.Element {
-  const subtitleStyle: string = "mb-2 text-muted"
-  var isAttentionOk = trail.attention;
+  var isAttentionOk: string = trail.attention;
+  var progressBar: progressBarProps;
   if (isAttentionOk === "" || isAttentionOk === undefined) {
     isAttentionOk = DescriptionStrings.warning;
   }
+  if (trail.difficulty === "Easy") {
+    progressBar = {
+      variant: "success",
+      amount: 25
+    };
+  } else if (trail.difficulty === "Medium") {
+    progressBar = {
+      variant: "warning",
+      amount: 50
+    };
+  } else {
+    progressBar = {
+      variant: "danger",
+      amount: 75
+    };
+  }
+
   return (
-    <Col>
-      <Card className="h-100 shadow p-3 w-100 mt-3">
-        <Card.Body>
-          <Row>
-            <Col>
-              <Card.Title>{trail.name}</Card.Title>
-              <Row>
-                {ColWithButton("/Weather", DescriptionStrings.weather, trail, "outline-secondary")}
-                {ColWithButton("/Information", DescriptionStrings.news, trail, "outline-warning")}
-                {ColWithButton("/Equipment", DescriptionStrings.equipment,trail, "outline-info")}
-              </Row>
-              <div style={{maxHeight: '500px', overflow: 'auto'}}>
-              <List>
-              <Card.Subtitle className={subtitleStyle}>
-                {DescriptionStrings.exposure}: 
-              </Card.Subtitle>
-              <Card.Text>{trail.exposure}</Card.Text>
-              <Card.Subtitle className={subtitleStyle}>
-                {DescriptionStrings.gradient}: 
-              </Card.Subtitle>
-              <Card.Text>{trail.gradient}</Card.Text>
-              <Card.Subtitle className={subtitleStyle}>
-                {DescriptionStrings.ascentTime}: 
-              </Card.Subtitle>
-              <Card.Text>{trail.avgTime}</Card.Text>
-              <Card.Subtitle className={subtitleStyle}>
-                {DescriptionStrings.upMeters}: 
-              </Card.Subtitle>
-              <Card.Text>{trail.wzniesienie}</Card.Text>
-              <Card.Subtitle className={subtitleStyle}>
-                {DescriptionStrings.info}: 
-              </Card.Subtitle>
-              <Card.Text>{isAttentionOk}</Card.Text>
-              </List>
-              </div>
-            </Col>
-            <Col className="col-7">
-              <div>{ControlledCarousel(trail)}</div>
-            </Col>
-          </Row>
-        </Card.Body>
-      </Card>
-    </Col>
+    <div className="td-all-data-container">
+      <div className="td-grid">
+        <div className="td-grid-item">
+          <Col>
+            <div className="td-description">
+              <span className="td-trail-main">Poziom trudności:</span>
+            </div>
+            <div className="td-title">
+              <ProgressBar
+                now={progressBar.amount}
+                label={trail.difficulty}
+                variant={progressBar.variant}
+                style={{ height: "32px" }}
+              />
+            </div>
+            <List>
+              {RenderDescriptionSection(
+                DescriptionStrings.exposure,
+                trail.exposure
+              )}
+              {RenderDescriptionSection(
+                DescriptionStrings.gradient,
+                trail.gradient
+              )}
+              {RenderDescriptionSection(
+                DescriptionStrings.ascentTime,
+                trail.avgTime
+              )}
+              {RenderDescriptionSection(
+                DescriptionStrings.upMeters,
+                trail.wzniesienie
+              )}
+              {RenderDescriptionSection(DescriptionStrings.info, isAttentionOk)}
+            </List>
+          </Col>
+        </div>
+        <div className="td-grid-item">
+          <iframe
+            className="td-iframe"
+            src={`https://fatmap.com/routeid/${trail.fatMapUrl}?fmid=em`}
+          ></iframe>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -44,7 +44,9 @@ export function Equipment() {
       avgTime: "",
       gradient: "",
       attention: "",
-    wzniesienie: ""
+    wzniesienie: "",
+    fatMapUrl: "",
+    difficulty: "",
   };
   const [trailInfo, setTrailInfo] = React.useState({
     details: trailDetails,
@@ -105,7 +107,7 @@ export function Equipment() {
     return (
       <>
         <div className="d-flex justify-content-center">
-          <NavbarShort />
+          {/* <NavbarShort /> */}
         </div>
         <Card className="bg-white shadow p-3 mb-3 mt-3">
           <Card.Header>
