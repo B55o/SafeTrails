@@ -38,8 +38,8 @@ export function TrailsItem(trail: TrailsItemProps): JSX.Element {
   return (
     <div className="ti-trail-container">
       <div className="ti-image-wrapper">
-        <img className="ti-first-image" src={trail.trailImgUrl} />
-        <img className="ti-second-image" src={trail.trailSecImgUrl} />
+        <img className="ti-first-image" src={trail.trailImgUrl} loading="lazy"/>
+        <img className="ti-second-image" src={trail.trailSecImgUrl}/>
       </div>
       <div className="ti-elements-wrapper">
         <div className="ti-description">

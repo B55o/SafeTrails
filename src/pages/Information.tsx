@@ -21,6 +21,8 @@ export function Information() {
     height: "",
     warnings: [],
     wzniesienie: "",
+    fatMapUrl: "",
+    difficulty: "",
   };
   const [trailInfo, setTrailInfo] = React.useState({
     details: trailDetails,
@@ -44,7 +46,7 @@ export function Information() {
     <Col>
       <Row>
         <div className="d-flex justify-content-center">
-          <NavbarShort />
+          {/* <NavbarShort /> */}
         </div>
       </Row>
       <Row>

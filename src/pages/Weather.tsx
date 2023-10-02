@@ -21,6 +21,8 @@ export function WeatherInfo() {
     height: "",
     warnings: [],
     wzniesienie: "",
+    fatMapUrl: "",
+    difficulty: "",
   };
 
   const [trailInfo, setTrailInfo] = React.useState({
@@ -39,7 +41,7 @@ export function WeatherInfo() {
       <Row>
         {" "}
         <div className="d-flex justify-content-center">
-          <NavbarShort />
+          {/* <NavbarShort /> */}
         </div>
       </Row>
       <Row className="mb-4">

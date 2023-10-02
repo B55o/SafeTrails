@@ -24,6 +24,7 @@
     "dayjs": "^1.11.6",
     "firebase": "^9.11.0",
     "firestorm-db": "^1.10.1",
+    "mdb-react-ui-kit": "^6.0.0",
     "mdbreact": "^5.2.0",
     "plotly.js": "^2.16.1",
     "react": "^18.2.0",
